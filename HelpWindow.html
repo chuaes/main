@@ -19,10 +19,10 @@
 <li><a href="#editing-a-patient-code-edit-code">3.4. Editing a patient : <code>edit</code></a></li>
 <li><a href="#locating-patients-by-name-code-find-code">3.5. Locating patients by name: <code>find</code></a></li>
 <li><a href="#deleting-a-patient-code-delete-code">3.6. Deleting a patient: <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code-code-coming-in-v2-0-code">3.7. Selecting a person : <code>select</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing entered commands : <code>history</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></li>
+<li><a href="#selecting-a-patient-code-select-code">3.7. Selecting a patient : <code>select</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.11. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.13. Saving the data</a></li>
@@ -30,7 +30,7 @@
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
-<li><a href="#command-summary-code-coming-in-v2-0-code">5. Command Summary <code>[coming in v2.0]</code></a></li>
+<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -79,7 +79,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all patients</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/94785930 a/Ibuprofen</code> : adds a patient named <code>John Doe</code>, who is allergic to <code>Ibuprofen</code> into Giatros</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/94785930 y/Ibuprofen</code> : adds a patient named <code>John Doe</code>, who is allergic to <code>Ibuprofen</code> into Giatros</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd patient shown in the current list</p>
@@ -111,11 +111,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [a/ALLERGY]</code> can be used as <code>n/John Doe t/Ibuprofen</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>n/NAME [y/ALLERGY]</code> can be used as <code>n/John Doe y/Ibuprofen</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[a/ALLERGY]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>a/Ibuprofen</code>,
-<code>a/Ibuprofen a/Penicillin</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[y/ALLERGY]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>y/Ibuprofen</code>,
+<code>y/Ibuprofen y/Penicillin</code> etc.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
@@ -135,7 +135,7 @@ Format: <code>help</code></p>
 <h3 id="adding-a-patient-code-add-code"><a class="link" href="#adding-a-patient-code-add-code">3.2. Adding a patient: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a patient into Giatros.<br>
-Format: `add n/NAME p/PHONE_NUMBER [x/NEXT_APPOINTMENT] [a/ALLERGY]&#8230;&#8203; `</p>
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [y/ALLERGY]&#8230;&#8203; `</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -149,29 +149,16 @@ A patient can have any number of allergies (including 0)
 </tr>
 </table>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A patient can only have either 0 or 1 next appointment. If a patient has more than one appointment scheduled, only the
-first appointment will be recorded
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 x/28-02-2019 a/Ibuprofen</code></p>
+<p><code>add n/John Doe p/98765432 e/johndoe@gmail.com a/120 Jurong West St 23, #13-189 y/Ibuprofen</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe p/12345678 a/Ibuprofen a/Penicillin</code></p>
+<p><code>add n/Betsy Crowe p/12345678 e/ <a href="mailto:betsy@ymail.com.sg">betsy@ymail.com.sg</a> a/56 Lorong 2 Toa Payoh, #01-129 y/Ibuprofen y/Penicillin</code></p>
 </li>
 </ul>
 </div>
@@ -187,7 +174,7 @@ Format: <code>list</code></p>
 <h3 id="editing-a-patient-code-edit-code"><a class="link" href="#editing-a-patient-code-edit-code">3.4. Editing a patient : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing patient stored in Giatros.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [x/NEXT_APPOINTMENT] [a/ALLERGY]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [y/ALLERGY]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -196,7 +183,7 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [x/NEXT_APPOINTMENT] [a/ALLERGY]&#82
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-This feature can be used to add, remove, or update a patient&#8217;s next appointment and allergy
+This feature can be used to add, remove, or update a patient&#8217;s name, phone, email, address, or allergy
 </td>
 </tr>
 </table>
@@ -219,7 +206,7 @@ The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p
 <p>When editing allergies, the existing allergies of the person will be removed i.e adding of allergies is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s allergies by typing <code>a/</code> without specifying any allergies after it.</p>
+<p>You can remove all the person&#8217;s allergies by typing <code>y/</code> without specifying any allergies after it.</p>
 </li>
 </ul>
 </div>
@@ -231,11 +218,11 @@ The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/10293847 x/02-03-2019</code><br>
-Edits the phone number and next appointment of the 1st patient to be <code>10293847</code> and <code>02-03-2019</code> respectively.</p>
+<p><code>edit 1 p/10293847</code><br>
+Edits the phone number of the 1st patient to be <code>10293847</code>.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower a/</code><br>
+<p><code>edit 2 n/Betsy Crower y/</code><br>
 Edits the name of the 2nd patient to be <code>Betsy Crower</code> and clears all existing allergies.</p>
 </li>
 </ul>
@@ -266,8 +253,7 @@ This feature is useful to find out whether a patient has been registered in the 
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Doctors and pharmacists can also use this feature to find out more about a specific patient,
-e.g. details of next appointment, patient&#8217;s allergy
+Doctors and pharmacists can also use this feature to find out more about a specific patient, e.g. patient&#8217;s allergy
 </td>
 </tr>
 </table>
@@ -353,9 +339,9 @@ Deletes the 1st patient in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code-code-coming-in-v2-0-code"><a class="link" href="#selecting-a-person-code-select-code-code-coming-in-v2-0-code">3.7. Selecting a person : <code>select</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="selecting-a-patient-code-select-code"><a class="link" href="#selecting-a-patient-code-select-code">3.7. Selecting a patient : <code>select</code></a></h3>
 <div class="paragraph">
-<p>Selects the person identified by the index number used in the displayed person list.<br>
+<p>Selects the patient identified by the index number used in the displayed patient list.<br>
 Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -363,10 +349,10 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>Selects the patient and loads the Google search page the patient at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
+<p>The index refers to the index number shown in the displayed patient list.</p>
 </li>
 <li>
 <p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
@@ -383,18 +369,18 @@ Format: <code>select INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+Selects the 2nd patient in the address book.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
 <code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
+Selects the 1st patient in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code-code-coming-in-v2-0-code"><a class="link" href="#listing-entered-commands-code-history-code-code-coming-in-v2-0-code">3.8. Listing entered commands : <code>history</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -415,9 +401,9 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code-code-coming-in-v2-0-code"><a class="link" href="#undoing-previous-command-code-undo-code-code-coming-in-v2-0-code">3.9. Undoing previous command : <code>undo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores the Giatros book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
 </div>
 <div class="admonitionblock note">
@@ -428,7 +414,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the Giatros book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -460,7 +446,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-code-coming-in-v2-0-code">3.10. Redoing the previously undone command : <code>redo</code> <code>[coming in v2.0]</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -530,13 +516,13 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary-code-coming-in-v2-0-code"><a class="link" href="#command-summary-code-coming-in-v2-0-code">5. Command Summary <code>[coming in v2.0]</code></a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [y/ALLERGY]&#8230;&#8203;</code><br>
+e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 y/paracetamol y/ibuprofen</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -546,7 +532,7 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [y/ALLERGY]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
@@ -575,4 +561,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 14:37:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 16:45:23 UTC</div></div></div></body></html>
